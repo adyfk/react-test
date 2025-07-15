@@ -1,0 +1,43 @@
+{
+  "common": {
+    "theme": {
+      "toggle": "Cambiar tema",
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+    },
+    "language": {
+      "switch": "Cambiar idioma",
+      "english": "Inglés",
+      "spanish": "Español",
+      "french": "Francés",
+      "german": "Alemán"
+    }
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "settings": "Configuración"
+  },
+  "home": {
+    "title": "Bienvenido a React Test",
+    "subtitle": "Una aplicación React moderna con Next.js, TypeScript y Tailwind CSS",
+    "description": "Esta es una configuración profesional de React con pruebas, internacionalización y prácticas de desarrollo modernas.",
+    "features": {
+      "title": "Características",
+      "testing": "Pruebas Completas",
+      "i18n": "Soporte Multi-idioma",
+      "theme": "Tema Oscuro/Claro",
+      "typescript": "Soporte TypeScript",
+      "tailwind": "Tailwind CSS",
+      "components": "Componentes UI"
+    }
+  },
+  "errors": {
+    "generic": "Algo salió mal",
+    "notFound": "Página no encontrada",
+    "loading": "Cargando...",
+    "retry": "Intentar de nuevo"
+  }
+} 
