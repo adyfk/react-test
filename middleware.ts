@@ -1,18 +1,13 @@
-import createMiddleware from 'next-intl/middleware'
-import { locales, defaultLocale } from './src/i18n/config'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales,
-
-  // Used when no locale matches
-  defaultLocale,
-
-  // The default locale is used when no locale is specified in the URL
-  localePrefix: 'as-needed',
-})
+export function middleware(_request: NextRequest) {
+  return NextResponse.next()
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/', '/(de|en|es|fr)/:path*'],
+  // Match all pathnames except for
+  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
+  // - … the ones containing a dot (e.g. `favicon.ico`)
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
 }

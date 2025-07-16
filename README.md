@@ -1,339 +1,221 @@
-# React Test - Professional Next.js Setup
+# GitHub Explorer
 
-A modern, professional React application built with Next.js 15, featuring comprehensive testing, internationalization, and enterprise-grade development practices.
+A modern web application built with Next.js and React that allows users to explore GitHub users and their repositories. The application features a beautiful, responsive UI with dark mode support and modern design components.
 
-## 🚀 Features
+## Features
 
-- **⚡ Next.js 15** - Latest version with App Router and React 19
-- **🔧 TypeScript** - Strict type checking with enhanced configuration
-- **🎨 Tailwind CSS** - Utility-first CSS framework
-- **🧪 Comprehensive Testing** - Jest, React Testing Library, and Playwright
-- **🌐 Internationalization** - Multi-language support with next-intl
-- **🌙 Theme Support** - Dark/light mode with next-themes
-- **🔒 Type-safe Environment** - Environment variables validation with Zod
-- **🛡️ Security** - Automated security scanning and dependency checks
-- **📏 Code Quality** - ESLint with formatting rules and pre-commit hooks
-- **🚀 CI/CD** - GitHub Actions workflows for testing and deployment
+- 🔍 GitHub User Search
+- 📊 Repository Explorer
+- 🌓 Dark/Light Mode Toggle
+- 🎨 Modern UI with Tailwind CSS
+- 📱 Responsive Design
+- 🔧 Built with TypeScript
+- 🧪 Comprehensive Testing Suite
 
-## 📋 Requirements
+## Tech Stack
 
-- Node.js 18.x or 20.x
+- **Framework:** Next.js 15.4.1
+- **UI Library:** React 19.1.0
+- **Styling:** Tailwind CSS, Radix UI Components
+- **State Management:** React Hooks
+- **HTTP Client:** Axios
+- **Testing:** Jest, React Testing Library, Playwright
+- **Type Checking:** TypeScript
+- **Linting:** ESLint
+- **Code Style & Formatting:** ESLint (with strict formatting rules)
+- **Git Hooks:** Husky, Commitlint
+- **Monitoring:** Custom Analytics and Performance Monitoring
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
 - npm or yarn
-- Git
 
-## 🏗️ Getting Started
+### Installation
 
-### 1. Clone and Install
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd react-test
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and add your GitHub API credentials:
+   ```
+   NEXT_PUBLIC_GITHUB_API_URL=https://api.github.com
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+The application will be available at `http://localhost:3000`.
+
+## Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build the production application
+- `npm run start` - Start the production server
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues
+- `npm run test` - Run Jest tests
+- `npm run test:watch` - Run Jest in watch mode
+- `npm run test:coverage` - Generate test coverage report
+- `npm run test:e2e` - Run Playwright end-to-end tests
+- `npm run test:e2e:ui` - Run Playwright tests with UI
+- `npm run validate` - Run type checking, linting, tests, and build
+
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js app directory
+├── components/         # Shared UI components
+│   ├── providers/     # Context providers
+│   └── ui/            # UI components
+├── core/              # Core functionality
+│   ├── api/          # API clients
+│   ├── config/       # Configuration
+│   ├── errors/       # Error handling
+│   ├── logging/      # Logging utilities
+│   └── monitoring/   # Analytics and monitoring
+├── features/         # Feature modules
+│   └── github/       # GitHub explorer feature
+├── shared/           # Shared utilities and hooks
+└── types/            # TypeScript type definitions
+```
+
+## Code Style & Formatting
+
+This project uses ESLint for both code linting and formatting. The configuration is defined in `eslint.config.mjs` and includes:
+
+### Key ESLint Rules
+
+- Indentation: 2 spaces
+- Quotes: Single quotes for strings
+- No semicolons
+- Trailing commas in multiline
+- Consistent spacing in objects and arrays
+- JSX with double quotes
+- Strict TypeScript checks
+- Modern React rules (no React import needed)
+
+### Running ESLint
 
 ```bash
-git clone <repository-url>
-cd react-test
-npm install
-```
-
-### 2. Environment Setup
-
-```bash
-# Copy environment template
-cp .env.example .env.local
-
-# Edit .env.local with your configuration
-# Add your environment variables as needed
-```
-
-### 3. Run Development Server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view the application.
-
-## 🧪 Testing
-
-### Unit Tests
-
-```bash
-# Run all tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
-npm run test:coverage
-```
-
-### End-to-End Tests
-
-```bash
-# Install Playwright browsers (first time only)
-npm run test:e2e:install
-
-# Run e2e tests
-npm run test:e2e
-
-# Run e2e tests with UI
-npm run test:e2e:ui
-```
-
-## 🌐 Internationalization
-
-The application supports multiple languages with full TypeScript support and IntelliSense:
-
-- English (en) - Default
-- Spanish (es)
-- French (fr)
-- German (de)
-
-### Type-Safe Translation Hooks
-
-```tsx
-import { useTranslations } from '@/i18n/hooks'
-
-function MyComponent() {
-  const t = useTranslations('common')
-  
-  // Full IntelliSense support for translation keys
-  return <h1>{t('theme.toggle')}</h1>
-}
-```
-
-### Auto-Generated Types
-
-The project automatically generates TypeScript types from message files:
-
-```bash
-# Generate type definitions for IntelliSense
-npm run generate:i18n-types
-```
-
-This provides:
-- **IntelliSense** for all translation keys
-- **Type safety** to prevent typos
-- **Auto-completion** in your IDE
-- **Build-time validation** of translation keys
-
-### Adding New Languages
-
-1. Create a new message file in `messages/` (e.g., `messages/it.json`)
-2. Add the locale to `src/i18n/config.ts`
-3. Update the middleware matcher in `middleware.ts`
-4. Run `npm run generate:i18n-types` to update type definitions
-
-### Adding New Translations
-
-Edit the respective JSON files in the `messages/` directory:
-
-```json
-{
-  "common": {
-    "button": "Button text"
-  },
-  "page": {
-    "title": "Page title"
-  }
-}
-```
-
-After adding translations, regenerate types:
-
-```bash
-npm run generate:i18n-types
-```
-
-## 🔧 Development Workflow
-
-### Code Quality
-
-```bash
-# Lint code
+# Check for issues
 npm run lint
 
-# Fix linting issues (includes formatting)
+# Fix automatically fixable issues
 npm run lint:fix
-
-# Type checking
-npm run type-check
-
-# Run all quality checks
-npm run validate
 ```
 
 ### Git Hooks
 
-The project uses Husky for Git hooks:
+The project uses Husky and Commitlint to ensure code quality:
+- Pre-commit: Runs ESLint and TypeScript checks
+- Commit messages: Follows conventional commit format
 
-- **pre-commit**: Runs lint-staged (ESLint fixing, type checking)
-- **commit-msg**: Validates commit messages using conventional commits
+## Commit Guidelines
 
-### 📝 Commit Conventions Guide
+This project follows [Conventional Commits](https://www.conventionalcommits.org/) specification. Each commit message must have a specific structure:
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages. This helps maintain a clear and standardized git history.
-
-#### Basic Format
 ```
-type: description
+<type>(<optional scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
 ```
 
-#### Types Explained
-| Type | Description | Example |
-|------|-------------|---------|
-| `feat` | New features | `feat: add dark mode toggle` |
-| `fix` | Bug fixes | `fix: resolve login error` |
-| `docs` | Documentation changes | `docs: update README` |
-| `style` | Code style/formatting | `style: format components` |
-| `refactor` | Code refactoring | `refactor: simplify auth logic` |
-| `test` | Adding/updating tests | `test: add unit tests for auth` |
-| `chore` | Maintenance tasks | `chore: update dependencies` |
-| `perf` | Performance improvements | `perf: optimize image loading` |
-| `ci` | CI/CD changes | `ci: update GitHub workflow` |
-| `build` | Build system changes | `build: modify webpack config` |
-| `revert` | Revert changes | `revert: remove dark mode` |
+### Commit Types
 
-#### Rules
-- Description must be lowercase
-- No period at the end
-- Keep the total length under 72 characters
-- Use imperative mood ("add" not "added")
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, missing semi colons, etc)
+- `refactor`: Code refactoring
+- `test`: Adding missing tests or correcting existing tests
+- `chore`: Changes to the build process or auxiliary tools
+- `perf`: Performance improvements
+- `ci`: CI configuration changes
+- `build`: Changes that affect the build system
+- `revert`: Reverts a previous commit
 
-#### Examples
-✅ Good Examples:
+### Rules
+
+- Type: Must be one of the types listed above
+- Subject: 
+  - No sentence-case, start-case, or pascal-case
+  - No period at the end
+  - Maximum length of 72 characters
+- Scope: Optional, can be anything specifying the place of the commit change
+
+### Examples
+
 ```bash
-git commit -m "feat: add user authentication"
-git commit -m "fix: resolve memory leak in video player"
-git commit -m "docs: update deployment instructions"
-git commit -m "style: format according to style guide"
+# Feature
+git commit -m "feat(user): add user authentication"
+# Bug fix
+git commit -m "fix(api): handle null response from GitHub API"
+# Documentation
+git commit -m "docs: update README with commit guidelines"
+# Multiple files/changes
+git commit -m "refactor(core): reorganize utility functions"
+# Breaking change
+git commit -m "feat(api)!: change authentication API response structure BREAKING CHANGE: Authentication response now includes refresh token"
 ```
 
-❌ Bad Examples:
-```bash
-git commit -m "updated stuff"                    # No type
-git commit -m "feat: Added new feature."         # Don't use past tense or period
-git commit -m "fix: THIS IS BROKEN!!"           # Don't use caps or exclamation
-git commit -m "chore: a very very very very very very very very long message"  # Too long
-```
+### Tips
 
-#### Tips
-1. Keep descriptions clear and concise
-2. Focus on WHY rather than HOW
-3. If you need more detail, use the commit body:
+1. Use present tense ("add feature" not "added feature")
+2. Use imperative mood ("move cursor to..." not "moves cursor to...")
+3. Keep the first line under 72 characters
+4. Reference issues and pull requests in the footer
    ```bash
-   git commit -m "feat: add password reset" -m "This adds the ability for users to reset their password through email verification"
+   git commit -m "fix(dashboard): resolve data loading issue Closes #123"
    ```
 
-### Commit Message Format
+## Testing
 
-Use conventional commits format:
+The project includes a comprehensive testing suite:
 
-```
-feat: add new feature
-fix: fix bug
-docs: update documentation
-style: formatting changes
-refactor: code refactoring
-test: add or update tests
-chore: maintenance tasks
-```
+- **Unit Tests:** Using Jest and React Testing Library
+- **End-to-End Tests:** Using Playwright
+- **Component Tests:** Testing UI components in isolation
 
-## 🏗️ Project Structure
-
-```
-├── .github/
-│   └── workflows/          # GitHub Actions CI/CD
-├── e2e/                    # End-to-end tests
-├── messages/               # Internationalization messages
-├── public/                 # Static assets
-├── src/
-│   ├── app/
-│   │   ├── [locale]/      # Localized routes
-│   │   │   ├── layout.tsx
-│   │   │   └── page.tsx
-│   │   └── globals.css
-│   ├── components/
-│   │   ├── ui/            # Reusable UI components
-│   │   └── theme-provider.tsx
-│   ├── i18n/              # Internationalization config
-│   ├── lib/               # Utility functions
-│   └── types/             # TypeScript type definitions
-├── jest.config.mjs         # Jest configuration
-├── playwright.config.ts    # Playwright configuration
-├── middleware.ts          # Next.js middleware
-└── tailwind.config.ts     # Tailwind configuration
-```
-
-## 📦 Available Scripts
-
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run lint:fix` | Fix ESLint issues and formatting |
-| `npm run test` | Run unit tests |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run test:coverage` | Run tests with coverage |
-| `npm run test:e2e` | Run e2e tests |
-| `npm run test:e2e:ui` | Run e2e tests with UI |
-| `npm run type-check` | Run TypeScript type checking |
-| `npm run validate` | Run all quality checks |
-
-## 🚀 Deployment
-
-### Environment Variables
-
-Set up the following environment variables for production:
-
+Run tests:
 ```bash
-NODE_ENV=production
-# Add your production environment variables here
+# Unit tests
+npm run test
+# E2E tests
+npm run test:e2e
+# Test coverage
+npm run test:coverage
 ```
 
-### Vercel (Recommended)
-
-1. Connect your repository to Vercel
-2. Set environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
-
-## 🛡️ Security
-
-The project includes several security measures:
-
-- **Dependency Scanning**: Automated vulnerability scanning
-- **Code Analysis**: CodeQL security analysis
-- **Environment Validation**: Type-safe environment variables
-- **Security Headers**: Configured in Next.js
-- **Audit Automation**: Regular security audits
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Run quality checks: `npm run validate`
-5. Commit your changes: `git commit -m 'feat: add amazing feature'`
-6. Push to the branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is private and not licensed for public use.
 
-## 🆘 Support
+## Acknowledgments
 
-If you encounter any issues or have questions:
-
-1. Check the [documentation](README.md)
-2. Search existing [issues](https://github.com/your-repo/issues)
-3. Create a [new issue](https://github.com/your-repo/issues/new)
-
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) - React framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
-- [Radix UI](https://www.radix-ui.com/) - UI components
-- [next-intl](https://next-intl-docs.vercel.app/) - Internationalization
-- [Jest](https://jestjs.io/) - Testing framework
-- [Playwright](https://playwright.dev/) - E2E testing
-- [Vercel](https://vercel.com/) - Deployment platform
+- Built with [Next.js](https://nextjs.org/)
+- UI components from [Radix UI](https://www.radix-ui.com/)
+- Styling with [Tailwind CSS](https://tailwindcss.com/) 
