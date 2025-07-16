@@ -2,6 +2,20 @@
 
 A modern web application built with Next.js and React that allows users to explore GitHub users and their repositories. The application features a beautiful, responsive UI with dark mode support and modern design components.
 
+🔗 **Live Demo:** [https://react-test-psi-pearl.vercel.app/](https://react-test-psi-pearl.vercel.app/)  
+📂 **Repository:** [https://github.com/adyfk/react-test](https://github.com/adyfk/react-test)
+
+## Test Requirements and Submission
+
+This project was created as part of the React JS Developer technical test. The requirements include:
+
+- ✅ Build a GitHub user search application
+- ✅ Implement repository exploration functionality
+- ✅ Create a responsive and modern UI
+- ✅ Include proper documentation
+- ✅ Deploy a live demo
+- ✅ Make the repository public
+
 ## Features
 
 - 🔍 GitHub User Search
